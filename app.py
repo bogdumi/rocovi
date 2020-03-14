@@ -13,12 +13,11 @@ app = Flask(__name__)
 # By default we set figures to be 6"x4" on a 110 dots per inch (DPI) screen 
 # (adjust DPI if you have a high res screen!)
 hfont = {'fontname':'Helvetica'}
-f1 = plt.figure(figsize=(12, 6), dpi=110)
+f1 = plt.figure(figsize=(10, 5), dpi=110)
 plt.grid()
 plt.rcParams['grid.linestyle'] = "dotted"
 plt.ylabel('Cases', fontsize=16, **hfont)
 plt.xlabel('Date', fontsize=16, **hfont)
-plt.title('Prediction of cases (Romania)', fontsize=20, **hfont)
 plt.style.use('seaborn-whitegrid')
 
 def getPoints(a, b, n):
@@ -46,6 +45,7 @@ def calculateError(coordsX, coordsY, A):
 xs = []
 ys = []
 dates = []
+lastUpdate = ""
 
 today = datetime.date.today()
 end_date = today
@@ -57,6 +57,9 @@ while start_date < end_date:
     data = pd.read_csv(url)
     df = pd.DataFrame(data)
     selectRo= df.loc[df['Country/Region'] == 'Romania']
+    if selectRo["Last Update"].values[0] > lastUpdate:
+        lastUpdate = selectRo["Last Update"].values[0]
+    print(lastUpdate)
     dates.append(start_date.strftime("%d-%m"))
     xs.append(i)
     ys.append(selectRo["Confirmed"].values[0])
@@ -86,6 +89,7 @@ for k in range(5):
 plt.plot(new_x, new_y, 'r.', label = "Current cases")
 plt.plot(futureDates, pred, 'rX', label = "Predicted cases")
 
+plt.title('Prediction of cases (Romania) - Last Timestamp: ' + lastUpdate, fontsize=20, **hfont)
 plt.xticks(xs, dates, rotation='vertical')
 plt.legend(loc="upper left")
 
