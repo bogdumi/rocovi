@@ -73,7 +73,7 @@ new_y = np.array(ys)
 
 A = lsr(new_x, new_y)
 
-linsp = np.linspace(min(xs), max(xs) + 5, 10000)
+linsp = np.linspace(min(xs), max(xs) + 5.5, 10000)
 gr = A[0] + A[1] * 1.4**linsp
 plt.plot(linsp, gr, 'b-', label = "Regression")
 
