@@ -1,6 +1,8 @@
 # rocovi
 Webapp to visualise future spread of CoVid-19 in different countries
 
+* Update 25th May 2020: this probably doesn't work anymore, but the code should be easily adaptable to future pandemics (or, more likely, to other data that can be regressed to an exponential function*
+
 ## See it online
 
 Navigate to https://rocovi.herokuapp.com to see it online. Works best in landscape/on a monitor. Not well optimised for mobile, but it gets the job done
