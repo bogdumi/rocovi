@@ -1,7 +1,7 @@
 # rocovi
 Webapp to visualise future spread of CoVid-19 in different countries
 
-* Update 25th May 2020: this probably doesn't work anymore, but the code should be easily adaptable to future pandemics (or, more likely, to other data that can be regressed to an exponential function*
+* Update 25th May 2020: this probably doesn't work anymore, but the code should be easily adaptable to any future pandemics (or, more likely, to other data that can be regressed to an exponential function)
 
 ## See it online
 
